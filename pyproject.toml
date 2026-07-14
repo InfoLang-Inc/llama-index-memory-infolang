@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "codespell[toml]>=2.2.6",
+    "pytest>=8.4",
+    "pytest-asyncio>=1.2",
+    "pytest-cov>=6.1.1",
+    "respx>=0.21",
+    "ruff>=0.11.11",
+]
+
+[project]
+name = "llama-index-memory-infolang"
+version = "0.1.0"
+description = "InfoLang memory integration for LlamaIndex"
+authors = [{ name = "InfoLang", email = "engineering@infolang.ai" }]
+requires-python = "<4.0,>=3.11"
+readme = "README.md"
+license = "MIT"
+keywords = ["llama-index", "infolang", "memory", "semantic-memory", "agents"]
+dependencies = [
+    "llama-index-core>=0.13.0,<0.15",
+    "infolang>=0.2.0,<1.0",
+]
+
+[project.urls]
+Homepage = "https://infolang.ai"
+Repository = "https://github.com/InfoLang-Inc/llama-index-memory-infolang"
+Issues = "https://github.com/InfoLang-Inc/llama-index-memory-infolang/issues"
+
+[tool.codespell]
+check-filenames = true
+check-hidden = true
+skip = "*.csv,*.html,*.json,*.jsonl,*.pdf,*.txt,*.ipynb"
+
+[tool.hatch.build.targets.sdist]
+include = ["llama_index/"]
+
+[tool.hatch.build.targets.wheel]
+include = ["llama_index/"]
+
+[tool.llamahub]
+contains_example = true
+import_path = "llama_index.memory.infolang"
+
+[tool.llamahub.class_authors]
+InfoLangMemory = "InfoLang-Inc"
